@@ -7,11 +7,15 @@ const options = {
     info: {
       title: "Movie Library API",
       version: "1.0.0",
-      description: "RESTful API for managing movies, actors, users, and reviews.",
+      description:
+        "RESTful API for managing movies, actors, users, and reviews.",
     },
     servers: [
+      {
+        url: "https://movie-library-api-qi4u.onrender.com",
+        description: "Render (production)",
+      },
       { url: "http://localhost:3000", description: "Local server" },
-      { url: "https://movie-library-api-qi4u.onrender.com", description: "Render (production)" },
     ],
     components: {
       schemas: {
