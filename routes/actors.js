@@ -6,7 +6,7 @@ import {
   createActor,
   updateActor,
   deleteActor,
-} from "../controllers/actorsController.js";
+} from "../controllers/actorsControllers.js";
 
 
 const router = express.Router();
