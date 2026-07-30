@@ -1,5 +1,10 @@
 import swaggerJsdoc from "swagger-jsdoc";
-import { movieSchema, actorSchema } from "./swaggerSchemas.js";
+import {
+  movieSchema,
+  actorSchema,
+  userSchema,
+  reviewSchema,
+} from "./swaggerSchemas.js";
 
 const options = {
   definition: {
@@ -17,10 +22,30 @@ const options = {
       },
       { url: "http://localhost:3000", description: "Local server" },
     ],
+    tags: [
+    {
+      name: "Movies",
+      description: "Movie management endpoints",
+    },
+    {
+      name: "Actors",
+      description: "Actor management endpoints",
+    },
+    {
+      name: "Users",
+      description: "User management endpoints",
+    },
+    {
+      name: "Reviews",
+      description: "Review management endpoints",
+    },
+  ],
     components: {
       schemas: {
         Movie: movieSchema,
         Actor: actorSchema,
+        User: userSchema,
+        Review: reviewSchema,
       },
     },
   },

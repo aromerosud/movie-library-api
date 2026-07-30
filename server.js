@@ -6,7 +6,10 @@ import swaggerUi from "swagger-ui-express";
 import { connectDB } from "./data/database.js";
 import moviesRoutes from "./routes/movies.js";
 import actorsRoutes from "./routes/actors.js";
+import usersRoutes from "./routes/users.js";
+import reviewsRoutes from "./routes/reviews.js";
 import { swaggerSpec } from "./swagger.js";
+
 
 dotenv.config();
 
@@ -23,6 +26,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Routes
 app.use("/movies", moviesRoutes);
 app.use("/actors", actorsRoutes);
+app.use("/users", usersRoutes);
+app.use("/reviews", reviewsRoutes);
 
 // Home
 app.get("/", (req, res) => {

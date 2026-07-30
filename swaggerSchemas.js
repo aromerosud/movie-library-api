@@ -34,3 +34,65 @@ export const actorSchema = {
     },
   },
 };
+
+export const userSchema = {
+  type: "object",
+  required: [
+    "firstName",
+    "lastName",
+    "email",
+    "username",
+    "favoriteGenre"
+  ],
+  properties: {
+    firstName: { type: "string", example: "Priscilla" },
+    lastName: { type: "string", example: "Valverde" },
+    email: { type: "string", example: "priscilla@example.com" },
+    username: { type: "string", example: "prival" },
+    favoriteGenre: { type: "string", example: "Drama" },
+    membershipType: {
+      type: "string",
+      example: "Premium"
+    },
+    active: {
+      type: "boolean",
+      example: true
+    }
+  }
+};
+
+export const reviewSchema = {
+  type: "object",
+  required: [
+    "movieTitle",
+    "reviewerName",
+    "rating",
+    "review"
+  ],
+  properties: {
+    movieTitle: {
+      type: "string",
+      example: "Inception"
+    },
+    reviewerName: {
+      type: "string",
+      example: "Priscilla"
+    },
+    rating: {
+      type: "number",
+      example: 5
+    },
+    review: {
+      type: "string",
+      example: "Excellent movie with an amazing storyline."
+    },
+    reviewDate: {
+      type: "string",
+      format: "date-time"
+    },
+    recommended: {
+      type: "boolean",
+      example: true
+    }
+  }
+};
