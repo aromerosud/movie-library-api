@@ -8,6 +8,7 @@ import {
   deleteActor,
 } from "../controllers/actorsControllers.js";
 
+import { isAuthenticated } from "../middleware/authenticate.js";
 
 const router = express.Router();
 
@@ -71,7 +72,7 @@ router.get("/:id", getActorById);
  *       500:
  *         description: Server error
  */
-router.post("/", createActor);
+router.post("/", isAuthenticated, createActor);
 
 /**
  * @swagger
@@ -100,7 +101,7 @@ router.post("/", createActor);
  *       404:
  *         description: Actor not found
  */
-router.put("/:id", updateActor);
+router.put("/:id", isAuthenticated, updateActor);
 
 /**
  * @swagger
@@ -126,6 +127,6 @@ router.put("/:id", updateActor);
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteActor);
+router.delete("/:id", isAuthenticated, deleteActor);
 
 export default router;

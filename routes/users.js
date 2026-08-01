@@ -8,6 +8,8 @@ import {
   deleteUser,
 } from "../controllers/usersControllers.js";
 
+import { isAuthenticated } from "../middleware/authenticate.js";
+
 const router = express.Router();
 
 /**
@@ -29,7 +31,7 @@ const router = express.Router();
  *       500:
  *         description: Server error
  */
-router.get("/", getAllUsers);
+router.get("/", isAuthenticated, getAllUsers);
 
 /**
  * @swagger
@@ -54,7 +56,7 @@ router.get("/", getAllUsers);
  *       500:
  *         description: Server error
  */
-router.get("/:id", getUserById);
+router.get("/:id", isAuthenticated, getUserById);
 
 /**
  * @swagger
@@ -77,7 +79,7 @@ router.get("/:id", getUserById);
  *       500:
  *         description: Server error
  */
-router.post("/", createUser);
+router.post("/", isAuthenticated, createUser);
 
 /**
  * @swagger
@@ -109,7 +111,7 @@ router.post("/", createUser);
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateUser);
+router.put("/:id", isAuthenticated, updateUser);
 
 /**
  * @swagger
@@ -135,6 +137,6 @@ router.put("/:id", updateUser);
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteUser);
+router.delete("/:id", isAuthenticated, deleteUser);
 
 export default router;

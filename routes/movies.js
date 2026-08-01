@@ -8,6 +8,8 @@ import {
   deleteMovie,
 } from "../controllers/moviesControllers.js";
 
+import { isAuthenticated } from "../middleware/authenticate.js";
+
 const router = express.Router();
 
 /**
@@ -70,7 +72,7 @@ router.get("/:id", getMovieById);
  *       500:
  *         description: Server error
  */
-router.post("/", createMovie);
+router.post("/", isAuthenticated, createMovie);
 
 /**
  * @swagger
@@ -99,7 +101,7 @@ router.post("/", createMovie);
  *       404:
  *         description: Movie not found
  */
-router.put("/:id", updateMovie);
+router.put("/:id", isAuthenticated, updateMovie);
 
 /**
  * @swagger
@@ -125,6 +127,6 @@ router.put("/:id", updateMovie);
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteMovie);
+router.delete("/:id", isAuthenticated, deleteMovie);
 
 export default router;

@@ -7,6 +7,8 @@ import {
   deleteReview,
 } from "../controllers/reviewsControllers.js";
 
+import { isAuthenticated } from "../middleware/authenticate.js";
+
 const router = express.Router();
 
 /**
@@ -75,7 +77,7 @@ router.get("/:id", getReviewById);
  *       500:
  *         description: Server error
  */
-router.post("/", createReview);
+router.post("/", isAuthenticated, createReview);
 
 /**
  * @swagger
@@ -106,7 +108,7 @@ router.post("/", createReview);
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateReview);
+router.put("/:id", isAuthenticated, updateReview);
 
 /**
  * @swagger
@@ -132,6 +134,6 @@ router.put("/:id", updateReview);
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteReview);
+router.delete("/:id", isAuthenticated, deleteReview);
 
 export default router;
