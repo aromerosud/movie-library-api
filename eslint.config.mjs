@@ -7,6 +7,17 @@ export default defineConfig([
     files: ["**/*.{js,mjs,cjs}"],
     plugins: { js },
     extends: ["js/recommended"],
-    languageOptions: { globals: globals.node },
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
+  {
+    files: ["tests/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+      },
+    },
   },
 ]);

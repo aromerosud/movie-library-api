@@ -30,8 +30,8 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       return done(null, profile);
-    }
-  )
+    },
+  ),
 );
 
 passport.serializeUser((user, done) => {
@@ -51,7 +51,7 @@ app.use(
     secret: process.env.SESSION_SECRET || "library-api-secret",
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 );
 
 app.use(passport.initialize());
@@ -80,8 +80,12 @@ app.use((req, res) => {
 });
 
 // Start Server
-connectDB().then(() => {
+connectDB();
+
+if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
-});
+}
+
+export default app;
