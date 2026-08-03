@@ -1,10 +1,22 @@
 import mongoose from "mongoose";
 
 const actorSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  birthDate: Date,
-  nationality: String,
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  },
+  birthDate: {
+    type: Date,
+    required: true
+  },
+  nationality: {
+    type: String,
+    required: true
+  },
   biography: String
 });
 
